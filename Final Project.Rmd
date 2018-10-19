@@ -1,0 +1,24 @@
+---
+title: "Final Project"
+author: "Alex LaPolice"
+date: "10/18/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+game_receiving_df <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
+  filter(Team == "NE") %>%
+  filter(Player_Name == "J.Edelman") 
+
+game_receiving_df
+
+
+
+#This is NFL Data that I have broken down to recieving data for Julian Edelman on the New England Patriots. I would like to explore something that involves how Julian Edelman's success effects the succes of the team as a whole. 
+```
+
