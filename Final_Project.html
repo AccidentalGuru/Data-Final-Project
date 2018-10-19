@@ -129,88 +129,231 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>game_receiving_df &lt;- read_csv(&quot;legacy_data/game_player_stats/game_receiving_df.csv&quot;) %&gt;%
-  filter(Team == &quot;NE&quot;) %&gt;%
-  filter(Player_Name == &quot;J.Edelman&quot;) </code></pre>
-<pre><code>## Parsed with column specification:
-## cols(
-##   .default = col_double(),
-##   GameID = col_integer(),
-##   Receiver_ID = col_character(),
-##   Team = col_character(),
-##   Opponent = col_character(),
-##   Player_Name = col_character(),
-##   Targets = col_integer(),
-##   Receptions = col_integer(),
-##   Drives = col_integer(),
-##   Total_Yards = col_integer(),
-##   Total_Raw_YAC = col_integer(),
-##   Total_Caught_YAC = col_integer(),
-##   Total_Dropped_YAC = col_integer(),
-##   Dropped_YAC_per_Target = col_integer(),
-##   Dropped_YAC_per_Drive = col_integer(),
-##   Fumbles = col_integer(),
-##   TDs = col_integer(),
-##   AC_TDs = col_integer(),
-##   Total_Raw_AirYards = col_integer(),
-##   Total_Caught_AirYards = col_integer()
-## )</code></pre>
-<pre><code>## See spec(...) for full column specifications.</code></pre>
-<pre><code>## Warning in rbind(names(probs), probs_f): number of columns of result is not
-## a multiple of vector length (arg 1)</code></pre>
-<pre><code>## Warning: 35 parsing failures.
-## row # A tibble: 5 x 5 col     row col           expected       actual      file                      expected   &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;                     actual 1  4143 Dropped_YAC_… no trailing c… .125        'legacy_data/game_player… file 2  4143 Dropped_YAC_… no trailing c… .166666666… 'legacy_data/game_player… row 3  4354 Dropped_YAC_… no trailing c… .6          'legacy_data/game_player… col 4  4354 Dropped_YAC_… no trailing c… .125        'legacy_data/game_player… expected 5  4434 Dropped_YAC_… no trailing c… .2          'legacy_data/game_player…
-## ... ................. ... .......................................................................... ........ .......................................................................... ...... .......................................................................... .... .......................................................................... ... .......................................................................... ... .......................................................................... ........ ..........................................................................
-## See problems(...) for more details.</code></pre>
-<pre class="r"><code>game_receiving_df</code></pre>
-<pre><code>## # A tibble: 84 x 93
-##    GameID Receiver_ID Team  Opponent Player_Name Targets Receptions Drives
-##     &lt;int&gt; &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;int&gt;      &lt;int&gt;  &lt;int&gt;
-##  1 2.01e9 00-0027150  NE    NYJ      J.Edelman        16          8      9
-##  2 2.01e9 00-0027150  NE    ATL      J.Edelman         5          3      3
-##  3 2.01e9 00-0027150  NE    BAL      J.Edelman         1          1      1
-##  4 2.01e9 00-0027150  NE    DEN      J.Edelman         3          3      3
-##  5 2.01e9 00-0027150  NE    TEN      J.Edelman         6          6      6
-##  6 2.01e9 00-0027150  NE    IND      J.Edelman         2          2      2
-##  7 2.01e9 00-0027150  NE    NYJ      J.Edelman         3          3      3
-##  8 2.01e9 00-0027150  NE    CAR      J.Edelman         1          0      1
-##  9 2.01e9 00-0027150  NE    JAC      J.Edelman         2          1      2
-## 10 2.01e9 00-0027150  NE    HOU      J.Edelman        15         10      6
-## # ... with 74 more rows, and 85 more variables: Targets_per_Drive &lt;dbl&gt;,
-## #   Rec_per_Drive &lt;dbl&gt;, Total_Yards &lt;int&gt;, Yards_per_Drive &lt;dbl&gt;,
-## #   Total_Raw_YAC &lt;int&gt;, Yards_per_Rec &lt;dbl&gt;, Yards_per_Target &lt;dbl&gt;,
-## #   YAC_per_Target &lt;dbl&gt;, Total_Caught_YAC &lt;int&gt;, Total_Dropped_YAC &lt;int&gt;,
-## #   Caught_YAC_per_Target &lt;dbl&gt;, Dropped_YAC_per_Target &lt;int&gt;,
-## #   YAC_per_Rec &lt;dbl&gt;, Caught_YAC_per_Rec &lt;dbl&gt;,
-## #   Dropped_YAC_per_Rec &lt;dbl&gt;, YAC_per_Drive &lt;dbl&gt;,
-## #   Caught_YAC_per_Drive &lt;dbl&gt;, Dropped_YAC_per_Drive &lt;int&gt;,
-## #   Rec_Percentage &lt;dbl&gt;, Fumbles &lt;int&gt;, TDs &lt;int&gt;, TDs_per_Drive &lt;dbl&gt;,
-## #   Fumbles_per_Drive &lt;dbl&gt;, AC_TDs &lt;int&gt;, AC_TDs_per_Drive &lt;dbl&gt;,
-## #   AC_TD_Rate &lt;dbl&gt;, TD_to_Fumbles &lt;dbl&gt;, Total_EPA &lt;dbl&gt;,
-## #   EPA_per_Drives &lt;dbl&gt;, Success_Rate &lt;dbl&gt;, EPA_per_Rec &lt;dbl&gt;,
-## #   EPA_per_Target &lt;dbl&gt;, EPA_Rec_Perc &lt;dbl&gt;, TD_per_Targets &lt;dbl&gt;,
-## #   Fumbles_per_Rec &lt;dbl&gt;, TD_per_Rec &lt;dbl&gt;, Total_WPA &lt;dbl&gt;,
-## #   WPA_per_Drive &lt;dbl&gt;, Win_Success_Rate &lt;dbl&gt;, WPA_per_Target &lt;dbl&gt;,
-## #   WPA_per_Rec &lt;dbl&gt;, WPA_Rec_Perc &lt;dbl&gt;, Total_Clutch_EPA &lt;dbl&gt;,
-## #   Clutch_EPA_per_Drive &lt;dbl&gt;, Total_Raw_AirYards &lt;int&gt;, PACR &lt;dbl&gt;,
-## #   Total_Caught_AirYards &lt;int&gt;, Raw_AirYards_per_Target &lt;dbl&gt;,
-## #   RACR &lt;dbl&gt;, Total_Raw_airEPA &lt;dbl&gt;, Total_Caught_airEPA &lt;dbl&gt;,
-## #   Raw_airEPA_per_Drive &lt;dbl&gt;, Caught_airEPA_per_Drive &lt;dbl&gt;,
-## #   airEPA_per_Target &lt;dbl&gt;, Caught_airEPA_per_Target &lt;dbl&gt;,
-## #   epa_RACR &lt;dbl&gt;, Total_Raw_airWPA &lt;dbl&gt;, Total_Caught_airWPA &lt;dbl&gt;,
-## #   Raw_airWPA_per_Drive &lt;dbl&gt;, Caught_airWPA_per_Drive &lt;dbl&gt;,
-## #   airWPA_per_Target &lt;dbl&gt;, Caught_airWPA_per_Target &lt;dbl&gt;,
-## #   yacEPA_Rec &lt;dbl&gt;, yacEPA_Drop &lt;dbl&gt;, Total_yacEPA &lt;dbl&gt;,
-## #   yacEPA_per_Target &lt;dbl&gt;, yacEPA_per_Rec &lt;dbl&gt;,
-## #   yacEPA_Rec_per_Drive &lt;dbl&gt;, yacEPA_Drop_per_Drive &lt;dbl&gt;,
-## #   yacWPA_Rec &lt;dbl&gt;, yacWPA_Drop &lt;dbl&gt;, Total_yacWPA &lt;dbl&gt;,
-## #   yacWPA_per_Target &lt;dbl&gt;, yacWPA_per_Rec &lt;dbl&gt;,
-## #   yacWPA_Rec_per_Drive &lt;dbl&gt;, yacWPA_Drop_per_Drive &lt;dbl&gt;,
-## #   wpa_RACR &lt;dbl&gt;, yac_Success_Rate &lt;dbl&gt;, yac_Rec_Success_Rate &lt;dbl&gt;,
-## #   air_Success_Rate &lt;dbl&gt;, air_Rec_Success_Rate &lt;dbl&gt;,
-## #   yac_Win_Success_Rate &lt;dbl&gt;, yac_Rec_Win_Success_Rate &lt;dbl&gt;,
-## #   air_Win_Success_Rate &lt;dbl&gt;, air_Rec_Win_Success_Rate &lt;dbl&gt;</code></pre>
 <pre class="r"><code>#This is NFL Data that I have broken down to recieving data for Julian Edelman on the New England Patriots. I would like to explore something that involves how Julian Edelman's success effects the succes of the team as a whole. </code></pre>
+<pre><code>##      GameID          Receiver_ID            Team          
+##  Min.   :2.009e+09   Length:84          Length:84         
+##  1st Qu.:2.012e+09   Class :character   Class :character  
+##  Median :2.013e+09   Mode  :character   Mode  :character  
+##  Mean   :2.013e+09                                        
+##  3rd Qu.:2.015e+09                                        
+##  Max.   :2.017e+09                                        
+##                                                           
+##    Opponent         Player_Name           Targets         Receptions   
+##  Length:84          Length:84          Min.   : 1.000   Min.   : 0.00  
+##  Class :character   Class :character   1st Qu.: 3.000   1st Qu.: 2.00  
+##  Mode  :character   Mode  :character   Median : 8.000   Median : 5.00  
+##                                        Mean   : 7.619   Mean   : 5.06  
+##                                        3rd Qu.:11.000   3rd Qu.: 7.00  
+##                                        Max.   :19.000   Max.   :13.00  
+##                                                                        
+##      Drives       Targets_per_Drive Rec_per_Drive     Total_Yards    
+##  Min.   : 1.000   Min.   :1.000     Min.   :0.0000   Min.   :  0.00  
+##  1st Qu.: 3.000   1st Qu.:1.000     1st Qu.:0.7107   1st Qu.: 15.75  
+##  Median : 5.000   Median :1.414     Median :1.0000   Median : 51.50  
+##  Mean   : 5.024   Mean   :1.445     Mean   :0.9378   Mean   : 54.60  
+##  3rd Qu.: 7.000   3rd Qu.:1.679     3rd Qu.:1.2000   3rd Qu.: 85.75  
+##  Max.   :12.000   Max.   :2.714     Max.   :2.0000   Max.   :151.00  
+##                                                                      
+##  Yards_per_Drive  Total_Raw_YAC    Yards_per_Rec    Yards_per_Target
+##  Min.   : 0.000   Min.   : -2.00   Min.   : 2.667   Min.   : 0.000  
+##  1st Qu.: 6.625   1st Qu.:  8.75   1st Qu.: 7.442   1st Qu.: 4.365  
+##  Median : 8.900   Median : 20.50   Median :10.375   Median : 6.286  
+##  Mean   :10.011   Mean   : 26.38   Mean   :11.024   Mean   : 6.863  
+##  3rd Qu.:13.275   3rd Qu.: 35.25   3rd Qu.:12.375   3rd Qu.: 8.479  
+##  Max.   :29.500   Max.   :117.00   Max.   :32.000   Max.   :24.000  
+##                                    NA's   :5                        
+##  YAC_per_Target   Total_Caught_YAC Total_Dropped_YAC Caught_YAC_per_Target
+##  Min.   :-1.000   Min.   : -2.00   Min.   :0         Min.   :-1.000       
+##  1st Qu.: 1.646   1st Qu.:  8.75   1st Qu.:0         1st Qu.: 1.646       
+##  Median : 2.700   Median : 20.50   Median :0         Median : 2.700       
+##  Mean   : 3.438   Mean   : 26.38   Mean   :0         Mean   : 3.438       
+##  3rd Qu.: 4.384   3rd Qu.: 35.25   3rd Qu.:0         3rd Qu.: 4.384       
+##  Max.   :16.200   Max.   :117.00   Max.   :0         Max.   :16.200       
+##                                                                           
+##  Dropped_YAC_per_Target  YAC_per_Rec     Caught_YAC_per_Rec
+##  Min.   :0              Min.   :-1.000   Min.   :-1.000    
+##  1st Qu.:0              1st Qu.: 2.866   1st Qu.: 2.866    
+##  Median :0              Median : 4.000   Median : 4.000    
+##  Mean   :0              Mean   : 5.330   Mean   : 5.330    
+##  3rd Qu.:0              3rd Qu.: 6.464   3rd Qu.: 6.464    
+##  Max.   :0              Max.   :27.000   Max.   :27.000    
+##                         NA's   :5        NA's   :5         
+##  Dropped_YAC_per_Rec YAC_per_Drive    Caught_YAC_per_Drive
+##  Min.   :0           Min.   :-1.000   Min.   :-1.000      
+##  1st Qu.:0           1st Qu.: 2.277   1st Qu.: 2.277      
+##  Median :0           Median : 4.000   Median : 4.000      
+##  Mean   :0           Mean   : 4.945   Mean   : 4.945      
+##  3rd Qu.:0           3rd Qu.: 6.429   3rd Qu.: 6.429      
+##  Max.   :0           Max.   :20.250   Max.   :20.250      
+##  NA's   :5                                                
+##  Dropped_YAC_per_Drive Rec_Percentage      Fumbles             TDs        
+##  Min.   :0             Min.   :0.0000   Min.   :0.00000   Min.   :0.0000  
+##  1st Qu.:0             1st Qu.:0.5000   1st Qu.:0.00000   1st Qu.:0.0000  
+##  Median :0             Median :0.6667   Median :0.00000   Median :0.0000  
+##  Mean   :0             Mean   :0.6423   Mean   :0.07143   Mean   :0.3214  
+##  3rd Qu.:0             3rd Qu.:0.7833   3rd Qu.:0.00000   3rd Qu.:0.2500  
+##  Max.   :0             Max.   :1.0000   Max.   :1.00000   Max.   :2.0000  
+##                                                                           
+##  TDs_per_Drive     Fumbles_per_Drive     AC_TDs       AC_TDs_per_Drive 
+##  Min.   :0.00000   Min.   :0.00000   Min.   :0.0000   Min.   :0.00000  
+##  1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.0000   1st Qu.:0.00000  
+##  Median :0.00000   Median :0.00000   Median :0.0000   Median :0.00000  
+##  Mean   :0.06031   Mean   :0.01182   Mean   :0.1429   Mean   :0.02496  
+##  3rd Qu.:0.02273   3rd Qu.:0.00000   3rd Qu.:0.0000   3rd Qu.:0.00000  
+##  Max.   :0.50000   Max.   :0.25000   Max.   :2.0000   Max.   :0.33333  
+##                                                                        
+##    AC_TD_Rate     TD_to_Fumbles   Total_EPA       EPA_per_Drives   
+##  Min.   :0.0000   Min.   :  0   Min.   :-8.9060   Min.   :-3.7338  
+##  1st Qu.:0.0000   1st Qu.:Inf   1st Qu.:-0.5013   1st Qu.:-0.1318  
+##  Median :0.5000   Median :Inf   Median : 1.6781   Median : 0.3714  
+##  Mean   :0.4524   Mean   :Inf   Mean   : 2.2068   Mean   : 0.3434  
+##  3rd Qu.:1.0000   3rd Qu.:Inf   3rd Qu.: 4.4575   3rd Qu.: 0.9312  
+##  Max.   :1.0000   Max.   :Inf   Max.   :12.1469   Max.   : 2.2477  
+##  NA's   :63       NA's   :60                                       
+##   Success_Rate     EPA_per_Rec      EPA_per_Target     EPA_Rec_Perc    
+##  Min.   :0.0000   Min.   :-0.5975   Min.   :-3.7338   Min.   :-1.0000  
+##  1st Qu.:0.3333   1st Qu.: 0.4958   1st Qu.:-0.0788   1st Qu.: 0.3121  
+##  Median :0.5000   Median : 0.8923   Median : 0.2189   Median : 0.5401  
+##  Mean   :0.4705   Mean   : 0.9192   Mean   : 0.1964   Mean   : 0.4780  
+##  3rd Qu.:0.6000   3rd Qu.: 1.2407   3rd Qu.: 0.6768   3rd Qu.: 0.7202  
+##  Max.   :1.0000   Max.   : 2.9434   Max.   : 1.7509   Max.   : 1.0000  
+##                   NA's   :5                                            
+##  TD_per_Targets    Fumbles_per_Rec     TD_per_Rec      Total_WPA        
+##  Min.   :0.00000   Min.   :0.00000   Min.   :0.000   Min.   :-0.394662  
+##  1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.000   1st Qu.:-0.005205  
+##  Median :0.00000   Median :0.00000   Median :0.000   Median : 0.042028  
+##  Mean   :0.04357   Mean   :0.01134   Mean   :0.071   Mean   : 0.055411  
+##  3rd Qu.:0.01316   3rd Qu.:0.00000   3rd Qu.:0.101   3rd Qu.: 0.129459  
+##  Max.   :0.50000   Max.   :0.20000   Max.   :1.000   Max.   : 0.375172  
+##                    NA's   :5         NA's   :5                          
+##  WPA_per_Drive       Win_Success_Rate WPA_per_Target     
+##  Min.   :-0.113908   Min.   :0.0000   Min.   :-0.113908  
+##  1st Qu.:-0.001524   1st Qu.:0.3333   1st Qu.:-0.001313  
+##  Median : 0.008812   Median :0.5000   Median : 0.005888  
+##  Mean   : 0.009753   Mean   :0.4945   Mean   : 0.005723  
+##  3rd Qu.: 0.022363   3rd Qu.:0.6250   3rd Qu.: 0.016688  
+##  Max.   : 0.114514   Max.   :1.0000   Max.   : 0.114514  
+##                                                          
+##   WPA_per_Rec        WPA_Rec_Perc     Total_Clutch_EPA   
+##  Min.   :-0.02919   Min.   :-1.0000   Min.   :-2.085668  
+##  1st Qu.: 0.01057   1st Qu.: 0.2804   1st Qu.:-0.006068  
+##  Median : 0.02049   Median : 0.5009   Median : 0.089044  
+##  Mean   : 0.02314   Mean   : 0.4662   Mean   : 0.132530  
+##  3rd Qu.: 0.03477   3rd Qu.: 0.7421   3rd Qu.: 0.297530  
+##  Max.   : 0.09214   Max.   : 1.0000   Max.   : 1.815934  
+##  NA's   :5                                               
+##  Clutch_EPA_per_Drive Total_Raw_AirYards      PACR        
+##  Min.   :-1.042834    Min.   : -8.00     Min.   :-8.0000  
+##  1st Qu.:-0.002165    1st Qu.: 14.75     1st Qu.: 0.5627  
+##  Median : 0.015951    Median : 55.00     Median : 1.0216  
+##  Mean   : 0.012660    Mean   : 57.26     Mean   : 1.3165  
+##  3rd Qu.: 0.051359    3rd Qu.: 83.00     3rd Qu.: 1.4656  
+##  Max.   : 0.211658    Max.   :202.00     Max.   :12.0000  
+##                                                           
+##  Total_Caught_AirYards Raw_AirYards_per_Target      RACR        
+##  Min.   :-9.00         Min.   :-4.000          Min.   :-8.0000  
+##  1st Qu.: 6.75         1st Qu.: 4.075          1st Qu.: 0.5627  
+##  Median :25.00         Median : 6.885          Median : 1.0216  
+##  Mean   :27.64         Mean   : 7.162          Mean   : 1.3165  
+##  3rd Qu.:44.00         3rd Qu.: 9.028          3rd Qu.: 1.4656  
+##  Max.   :82.00         Max.   :25.000          Max.   :12.0000  
+##                                                                 
+##  Total_Raw_airEPA  Total_Caught_airEPA Raw_airEPA_per_Drive
+##  Min.   :-8.5627   Min.   :-7.9281     Min.   :-1.44661    
+##  1st Qu.:-0.1032   1st Qu.:-0.5610     1st Qu.:-0.04992    
+##  Median : 2.3782   Median : 0.8833     Median : 0.53914    
+##  Mean   : 3.3826   Mean   : 0.9846     Mean   : 0.54905    
+##  3rd Qu.: 6.8135   3rd Qu.: 2.9435     3rd Qu.: 1.18885    
+##  Max.   :17.3378   Max.   : 7.8215     Max.   : 3.35387    
+##                                                            
+##  Caught_airEPA_per_Drive airEPA_per_Target  Caught_airEPA_per_Target
+##  Min.   :-1.4466         Min.   :-1.44661   Min.   :-1.44661        
+##  1st Qu.:-0.1406         1st Qu.:-0.03558   1st Qu.:-0.09064        
+##  Median : 0.1667         Median : 0.36934   Median : 0.12348        
+##  Mean   : 0.1522         Mean   : 0.34713   Mean   : 0.07851        
+##  3rd Qu.: 0.5495         3rd Qu.: 0.79179   3rd Qu.: 0.36306        
+##  Max.   : 1.9236         Max.   : 2.23591   Max.   : 0.98112        
+##                                                                     
+##     epa_RACR        Total_Raw_airWPA    Total_Caught_airWPA
+##  Min.   :-25.8060   Min.   :-0.818775   Min.   :-0.279726  
+##  1st Qu.: -0.2919   1st Qu.:-0.003904   1st Qu.:-0.007246  
+##  Median :  0.3639   Median : 0.059824   Median : 0.019056  
+##  Mean   :  0.2490   Mean   : 0.091219   Mean   : 0.035594  
+##  3rd Qu.:  1.0991   3rd Qu.: 0.159195   3rd Qu.: 0.092335  
+##  Max.   : 13.9257   Max.   : 0.954330   Max.   : 0.325981  
+##                                                            
+##  Raw_airWPA_per_Drive Caught_airWPA_per_Drive airWPA_per_Target   
+##  Min.   :-0.1169678   Min.   :-0.049312       Min.   :-0.0629827  
+##  1st Qu.:-0.0007374   1st Qu.:-0.001781       1st Qu.:-0.0006009  
+##  Median : 0.0128086   Median : 0.003614       Median : 0.0087457  
+##  Mean   : 0.0149103   Mean   : 0.005648       Mean   : 0.0091728  
+##  3rd Qu.: 0.0283676   3rd Qu.: 0.016270       3rd Qu.: 0.0199448  
+##  Max.   : 0.1363329   Max.   : 0.062055       Max.   : 0.0537478  
+##                                                                   
+##  Caught_airWPA_per_Target   yacEPA_Rec       yacEPA_Drop      
+##  Min.   :-0.049312        Min.   :-0.9174   Min.   :-25.1546  
+##  1st Qu.:-0.001411        1st Qu.: 0.8162   1st Qu.: -7.3844  
+##  Median : 0.002538        Median : 2.9514   Median : -3.3496  
+##  Mean   : 0.003112        Mean   : 3.4922   Mean   : -4.6630  
+##  3rd Qu.: 0.009550        3rd Qu.: 5.2697   3rd Qu.: -1.0368  
+##  Max.   : 0.030712        Max.   :12.9236   Max.   :  0.2336  
+##                                                               
+##   Total_yacEPA      yacEPA_per_Target   yacEPA_per_Rec   
+##  Min.   :-19.7623   Min.   :-3.782932   Min.   :-0.1311  
+##  1st Qu.: -3.9274   1st Qu.:-0.710436   1st Qu.: 0.2693  
+##  Median :  0.0193   Median : 0.009649   Median : 0.5828  
+##  Mean   : -1.1708   Mean   :-0.150339   Mean   : 0.7278  
+##  3rd Qu.:  2.6881   3rd Qu.: 0.401873   3rd Qu.: 0.9488  
+##  Max.   : 11.3687   Max.   : 3.197495   Max.   : 3.4987  
+##                                         NA's   :5        
+##  yacEPA_Rec_per_Drive yacEPA_Drop_per_Drive   yacWPA_Rec       
+##  Min.   :-0.1311      Min.   :-3.7829       Min.   :-0.078634  
+##  1st Qu.: 0.2138      1st Qu.:-1.2736       1st Qu.: 0.009854  
+##  Median : 0.5178      Median :-0.7446       Median : 0.050341  
+##  Mean   : 0.6740      Mean   :-0.8789       Mean   : 0.086776  
+##  3rd Qu.: 1.0303      3rd Qu.:-0.2175       3rd Qu.: 0.119141  
+##  Max.   : 3.1975      Max.   : 0.1168       Max.   : 0.550417  
+##                                                                
+##   yacWPA_Drop        Total_yacWPA       yacWPA_per_Target  
+##  Min.   :-1.12958   Min.   :-0.643257   Min.   :-0.113766  
+##  1st Qu.:-0.15850   1st Qu.:-0.095147   1st Qu.:-0.020370  
+##  Median :-0.06885   Median :-0.006842   Median :-0.001300  
+##  Mean   :-0.13418   Mean   :-0.047408   Mean   :-0.004319  
+##  3rd Qu.:-0.01487   3rd Qu.: 0.065518   3rd Qu.: 0.010756  
+##  Max.   : 0.07723   Max.   : 0.267215   Max.   : 0.103832  
+##                                                            
+##  yacWPA_per_Rec      yacWPA_Rec_per_Drive yacWPA_Drop_per_Drive
+##  Min.   :-0.011234   Min.   :-0.011234    Min.   :-0.161368    
+##  1st Qu.: 0.005383   1st Qu.: 0.003467    1st Qu.:-0.031405    
+##  Median : 0.011006   Median : 0.011208    Median :-0.015357    
+##  Mean   : 0.016582   Mean   : 0.016465    Mean   :-0.023268    
+##  3rd Qu.: 0.021617   3rd Qu.: 0.022427    3rd Qu.:-0.005824    
+##  Max.   : 0.103832   Max.   : 0.103832    Max.   : 0.077226    
+##  NA's   :5                                                     
+##     wpa_RACR        yac_Success_Rate yac_Rec_Success_Rate air_Success_Rate
+##  Min.   :-34.8197   Min.   :0.0000   Min.   :0.0000       Min.   :0.0000  
+##  1st Qu.: -0.3215   1st Qu.:0.3750   1st Qu.:0.3333       1st Qu.:0.4520  
+##  Median :  0.3537   Median :0.5000   Median :0.5000       Median :0.5556  
+##  Mean   :  0.5100   Mean   :0.5053   Mean   :0.4782       Mean   :0.5476  
+##  3rd Qu.:  1.1268   3rd Qu.:0.6667   3rd Qu.:0.6364       3rd Qu.:0.7143  
+##  Max.   : 32.5545   Max.   :1.0000   Max.   :1.0000       Max.   :1.0000  
+##                                                                           
+##  air_Rec_Success_Rate yac_Win_Success_Rate yac_Rec_Win_Success_Rate
+##  Min.   :0.0000       Min.   :0.0000       Min.   :0.0000          
+##  1st Qu.:0.1313       1st Qu.:0.3734       1st Qu.:0.3250          
+##  Median :0.3038       Median :0.5000       Median :0.5000          
+##  Mean   :0.2964       Mean   :0.5052       Mean   :0.4686          
+##  3rd Qu.:0.4286       3rd Qu.:0.6667       3rd Qu.:0.6000          
+##  Max.   :1.0000       Max.   :1.0000       Max.   :1.0000          
+##                                                                    
+##  air_Win_Success_Rate air_Rec_Win_Success_Rate
+##  Min.   :0.0000       Min.   :0.0000          
+##  1st Qu.:0.4520       1st Qu.:0.1645          
+##  Median :0.5556       Median :0.3205          
+##  Mean   :0.5556       Mean   :0.3035          
+##  3rd Qu.:0.7143       3rd Qu.:0.4196          
+##  Max.   :1.0000       Max.   :1.0000          
+## </code></pre>
 
 
 
