@@ -11,7 +11,7 @@ library(tidyverse)
 ```
 
 ```{r, include=FALSE}
-game_receiving_df <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
+Jules <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
   filter(Team == "NE") %>%
   filter(Player_Name == "J.Edelman") 
 
@@ -26,5 +26,9 @@ game_receiving_df <- read_csv("legacy_data/game_player_stats/game_receiving_df.c
 
 ```{r, echo=FALSE}
 summary(game_receiving_df)
+```
+
+```{r}
+write_rds(Jules, "Final_Project.rds", compress = "none")
 ```
 
