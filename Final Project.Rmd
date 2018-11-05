@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(readxl)
 ```
 
 ```{r, include=FALSE}
@@ -24,11 +25,4 @@ Jules <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
 ```
 
 
-```{r, echo=FALSE}
-summary(game_receiving_df)
-```
-
-```{r}
-write_rds(Jules, "Final_Project.rds", compress = "none")
-```
 
