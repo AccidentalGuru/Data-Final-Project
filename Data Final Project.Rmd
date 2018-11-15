@@ -25,7 +25,12 @@ Jules <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
 ```
 
 
-```{r, echo=FALSE}
+```{r, include=FALSE, echo=FALSE}
 summary(Jules)
+```
+
+```{r}
+Jules %>%
+  mutate(Season = str_sub(GameID, 1, 4))
 ```
 
