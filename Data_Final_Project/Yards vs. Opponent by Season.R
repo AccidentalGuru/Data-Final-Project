@@ -34,7 +34,7 @@ ui <- fluidPage(
   
   
   # Application title
-  titlePanel("Jules Yards depending on Receptions and Opponent"),
+  titlePanel("Jules Yards depending on Opponent"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -71,7 +71,7 @@ server <- function(input, output) {
       geom_point() +
       xlab("Season") +
       ylab("Total Yards") +
-      ggtitle("Yards based on # of Receptions, Grouped by Opponent")
+      ggtitle("Yards based on Season, Grouped by Opponent")
   })
 }
 
