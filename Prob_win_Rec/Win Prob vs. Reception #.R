@@ -64,10 +64,10 @@ server <- function(input, output) {
     
     Jules %>%
       filter(Season == input$Season) %>%
-      ggplot(aes(x = Receptions, y = Win_Success_Rate, color = Opponent)) + 
+      ggplot(aes(x = Win_Success_Rate, y = Receptions, color = Opponent)) + 
       geom_point() +
-      xlab("Reception") +
-      ylab("Win Probability") +
+      xlab("Win Probability Before the Game") +
+      ylab("Receptions") +
       ggtitle("Win Probability based on # of Recepetion Jules Had")
   })
 }
