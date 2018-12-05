@@ -34,7 +34,7 @@ ui <- fluidPage(
   
   
   # Application title
-  titlePanel("Patriots Win Probability based on # of Jules Receptions"),
+  titlePanel("Julian Edelman's Performance based on likelihood of a Patriots Win"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
@@ -68,7 +68,7 @@ server <- function(input, output) {
       geom_point() +
       xlab("Win Probability Before the Game") +
       ylab("Receptions") +
-      ggtitle("Win Probability based on # of Recepetion Jules Had")
+      ggtitle("The Number of Catches Julian Edelman's had depending on the Win Probability for the Patriots")
   })
 }
 
