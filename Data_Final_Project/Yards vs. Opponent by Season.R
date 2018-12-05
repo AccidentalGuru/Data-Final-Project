@@ -34,7 +34,7 @@ ui <- fluidPage(
   
   
   # Application title
-  titlePanel("Jules Yards depending on Opponent"),
+  titlePanel("Julian Edelman Total Yards depending on Opponent"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
