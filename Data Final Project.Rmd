@@ -29,6 +29,7 @@ Jules <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
 summary(Jules)
 ```
 
+#Average targets by Season progression
 ```{r}
 Jules %>%
   mutate(Season = str_sub(GameID, 1, 4)) %>%
@@ -37,7 +38,7 @@ Jules %>%
 
 #through his first 4 seasons he only averaged, at most 4 targets a game, but since 2013 he has averaged at least 9 targets/game demonstrating progression and potentially an improved confidence from Brady
 ```
-
+#AVG Yards by opponent
 ```{r}
 Jules %>%
   group_by(Opponent) %>%
@@ -49,6 +50,8 @@ Jules %>%
 #His closest divisional oponent is MIA at 73 yards/game, No other divisional opponents in tops 10
 ```
 
+
+#YARDAGE/Game by Season progression
 ```{r}
 Jules %>%
   mutate(Season = str_sub(GameID, 1, 4)) %>%
