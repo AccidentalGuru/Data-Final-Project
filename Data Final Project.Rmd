@@ -50,6 +50,12 @@ Jules %>%
 ```
 
 ```{r}
+Jules %>%
+  mutate(Season = str_sub(GameID, 1, 4)) %>%
+  group_by(Season) %>%
+  summarize(Avg_Yards = mean(Total_Yards))
+
+#same as with targets, his yardage spiked in 2013 by ~ 40 yards/game
 
 ```
 
