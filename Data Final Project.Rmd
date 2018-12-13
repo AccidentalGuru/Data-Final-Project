@@ -9,12 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(readxl)
+library(knitr)
 
 
 ```
 
 
-```{r}
+```{r, include=FALSE, echo=FALSE}
 
 
 Jules <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
@@ -30,20 +31,22 @@ summary(Jules)
 ```
 
 #Average targets by Season progression
-```{r}
+```{r, echo=FALSE}
 Jules %>%
   mutate(Season = str_sub(GameID, 1, 4)) %>%
   group_by(Season) %>%
-  summarize(Avg_Targets = mean(Targets))
+  summarize(Avg_Targets = mean(Targets)) %>%
+  kable()
 
 #through his first 4 seasons he only averaged, at most 4 targets a game, but since 2013 he has averaged at least 9 targets/game demonstrating progression and potentially an improved confidence from Brady
 ```
 #AVG Yards by opponent
-```{r}
+```{r, echo=FALSE}
 Jules %>%
   group_by(Opponent) %>%
   summarize(Avg_Yards = mean(Total_Yards)) %>%
-  filter(Avg_Yards >= 70)
+  filter(Avg_Yards >= 70) %>%
+  kable()
 
 
 #On Avg his top 5 most favorable matchups are DAL, LA, SD, SEA, and DET
@@ -52,11 +55,12 @@ Jules %>%
 
 
 #YARDAGE/Game by Season progression
-```{r}
+```{r, echo=FALSE}
 Jules %>%
   mutate(Season = str_sub(GameID, 1, 4)) %>%
   group_by(Season) %>%
-  summarize(Avg_Yards = mean(Total_Yards))
+  summarize(Avg_Yards = mean(Total_Yards)) %>%
+  kable()
 
 #same as with targets, his yardage spiked in 2013 by ~ 40 yards/game
 
