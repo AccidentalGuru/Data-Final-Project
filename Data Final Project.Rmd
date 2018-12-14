@@ -30,7 +30,7 @@ Jules <- read_csv("legacy_data/game_player_stats/game_receiving_df.csv") %>%
 summary(Jules)
 ```
 
-#Average targets by Season progression
+#Average Targets/Game by Season Progression
 ```{r, echo=FALSE}
 Jules %>%
   mutate(Season = str_sub(GameID, 1, 4)) %>%
@@ -40,7 +40,8 @@ Jules %>%
 
 #through his first 4 seasons he only averaged, at most 4 targets a game, but since 2013 he has averaged at least 9 targets/game demonstrating progression and potentially an improved confidence from Brady
 ```
-#AVG Yards by opponent
+
+#Average Yards/Game by Opponent
 ```{r, echo=FALSE}
 Jules %>%
   group_by(Opponent) %>%
@@ -54,7 +55,7 @@ Jules %>%
 ```
 
 
-#YARDAGE/Game by Season progression
+#Average Yards/Game by Season Progression
 ```{r, echo=FALSE}
 Jules %>%
   mutate(Season = str_sub(GameID, 1, 4)) %>%
@@ -66,7 +67,5 @@ Jules %>%
 
 ```
 
-```{r}
-Jules
-```
+
 
