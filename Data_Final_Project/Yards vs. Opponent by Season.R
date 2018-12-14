@@ -1,11 +1,5 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
+#Load Libraries
+
 
 library(tidyverse)
 library(dplyr)
@@ -21,22 +15,22 @@ library(kableExtra)
 library(scales)
 library(shiny)
 
-
+#Data Manipulation
 Jules <- read_csv("Untitled/game_player_stats/game_receiving_df.csv") %>%
   filter(Team == "NE") %>%
   filter(Player_Name == "J.Edelman") %>%
   mutate(Season = str_sub(GameID, 1, 4))
 
 
-# Define UI for application that draws a histogram
+#App UI
 ui <- fluidPage(
   
   
   
-  # Application title
+#App Title
   titlePanel("Julian Edelman Total Yards depending on Opponent"),
   
-  # Sidebar with a slider input for number of bins 
+#Sidebar Layout - picking teams from dropdown menu
   sidebarLayout(
     sidebarPanel(
       selectInput("Opponent",
@@ -51,14 +45,13 @@ ui <- fluidPage(
                           ))
     ),
     
-    # Show a plot of the generated distribution
     mainPanel(
       plotOutput("distPlot")
     )
   )
 )
 
-# Define server logic required to draw a histogram
+#Interactive Plot
 server <- function(input, output) {
   
   output$distPlot <- renderPlot({
@@ -75,5 +68,5 @@ server <- function(input, output) {
   })
 }
 
-# Run the application 
+#Run the app
 shinyApp(ui = ui, server = server)
