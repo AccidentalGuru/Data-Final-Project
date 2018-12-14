@@ -14,6 +14,7 @@ library(foreign)
 library(kableExtra)
 library(scales)
 library(shiny)
+library(markdown)
 
 #Data Manipulation
 Jules <- read_csv("Untitled/game_player_stats/game_receiving_df.csv") %>%
@@ -25,8 +26,11 @@ Jules <- read_csv("Untitled/game_player_stats/game_receiving_df.csv") %>%
 #App UI
 ui <- fluidPage(
   
-  
-  
+ 
+navbarPage("Is Julian Edelman Elite or a Product of The Patriots System?",
+           tabPanel(
+    
+
 #App Title
   titlePanel("Julian Edelman Total Yards depending on Opponent"),
   
@@ -46,10 +50,17 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      plotOutput("distPlot")
+      plotOutput("distPlot")))),
+      
+      tabPanel(titlePanel("Data and Conclusions"),
+               fluidRow(
+                 column(4,
+                        includeHTML("Data_Final_Project.html")
+                 )
+               ))
     )
   )
-)
+
 
 #Interactive Plot
 server <- function(input, output) {
@@ -66,6 +77,8 @@ server <- function(input, output) {
       ylab("Total Yards") +
       ggtitle("Yards based on Season, Grouped by Opponent")
   })
+  
+  
 }
 
 #Run the app
