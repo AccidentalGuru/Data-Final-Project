@@ -4,3 +4,5 @@ I have taken NFL Data from 2009-2016 and have filtered it down to every catch Ju
 
 
 Link to the data: https://github.com/ryurko/nflscrapR-data/tree/master/legacy_data
+
+Background knowledge on Edelman: https://bleacherreport.com/articles/2356758-where-does-julian-edelman-rank-among-the-nfls-top-wide-receivers
